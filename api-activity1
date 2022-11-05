@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title id="title">API</title>
+<style>
+    body{
+        background-color: darkslateblue;
+    }
+
+    #title{
+        /* align-items: center; */
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        
+    }
+    .card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 4vh;
+        border: 4px solid darkblue;
+        background-color: white;
+        border-radius: 5vh;
+        height: 80vh;
+        width: 30%;
+        margin-left: 35%;
+        /* width: fit-content; */
+    
+    }
+    .cardTop{
+        background-color: blue;
+        width: fit-content;
+        align-items: center;
+        
+       
+    }
+    .cardBottom{
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* background-color: aqua; */
+        height: 30vh;
+       
+    }
+
+    #avatar{
+        width: 30vh;
+        border-radius: 50%;
+        border: 6px solid lightgrey;
+        margin-top: 15vh;
+    }
+
+    #name{
+        font-weight: bold;
+        font-size: larger;
+        color: black;
+        padding-top: 20px;
+    }
+
+    
+    #login{
+        font-weight: bold;
+        font-size: larger;
+        color: darkblue;
+        padding-top: 10px;
+        
+    }
+
+    #bio{
+        font-weight: lighter;
+        font-size: large;
+        color:darkslategray;
+        padding-top: 10px;
+        width: 50vh;
+        
+    }
+
+    #btn{
+        width: 20vh;
+        height: 7vh;
+        background-color: darkblue;
+        border-radius: 12px;
+        font-size: larger;
+        color: white;
+        margin-top: 3vh;
+        border: none;
+    }
+   
+
+
+</style>
+</head>
+<body>
+
+<h1 id="title">API Activity</h1>
+<!-- <p id="body"></p> -->
+<div class="card">
+    <div class="cardTop">
+    <img id="avatar" src="" alt="Avatar Url"></div>
+    <div class="cardBottom">
+    <div id="name">Name</div>
+    <div id="login">Login</div>
+    <div id="bio">Bio</div>
+    <div><a id="profLink" href="https://www.google.com" target="_blank"><button id="btn">View Profile</button></a></div></div>
+    
+</div>
+
+<script>
+fetch('https://api.github.com/users/AleeRaza11')
+  .then(response => response.json())
+  .then(json => {
+  console.log(json)
+  	document.getElementById('avatar').src = json.avatar_url;
+    document.getElementById('name').innerHTML = json.name;
+    document.getElementById('login').innerHTML = json.login;
+    document.getElementById('bio').innerHTML = json.bio;
+    document.getElementById('profLink').href = json.html_url;
+ 
+  
+  })
+</script>
+</body>
+</html>
